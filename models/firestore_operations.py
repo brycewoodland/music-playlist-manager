@@ -1,36 +1,35 @@
 import firebase_admin
 from firebase_admin import credentials, firestore
 
-# Application Default Credentials 
 cred = credentials.Certificate('service-account-file.json')
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
 
-
 def add_user(user_id, first_name, last_name):
     """
     Adds a new user to a collection in firebase
     """
-    user_ref = db.collection('users').document(user_id)
-    user_ref.set({
+    user_data = {
         'first_name': first_name,
         'last_name': last_name
-    })
-    print('User added successfully!')
+    }
+    db.collection('users').document(user_id).set(user_data)
+    return {'message': 'User added succesfully!'}
 
 def add_song(song_id, song_title, artist, album, duration):
     '''
     Adds a song to the database.
     '''
-    song_ref = db.collection('songs').document(song_id)
-    song_ref.set({
-        'title': song_title,
+    song_data = {
+        'song_id': song_id,
+        'song_title': song_title,
         'artist': artist,
         'album': album,
         'duration': duration
-    })
-    print('Song added successfully')
+    }
+    db.collection('songs').document(song_id).set(song_data)
+    return {'message': 'Song added successfully'}
 
 def add_playlist(playlist_id, user_id, playlist_title, description):
     '''
@@ -43,7 +42,7 @@ def add_playlist(playlist_id, user_id, playlist_title, description):
         'description': description,
         'date': firestore.SERVER_TIMESTAMP
     })
-    print('Playlist added succesfully!')
+    return {'message': 'Playlist added succesfully!'}
 
 def add_song_to_playlist(playlist_id, song_id):
     '''
@@ -54,7 +53,7 @@ def add_song_to_playlist(playlist_id, song_id):
         'playlist_id': playlist_id,
         'song_id': song_id
     })
-    print('Song add to the playlist succesfully!')
+    return {'message': 'Song add to the playlist succesfully!'}
 
 def update_song(song_id, **kwargs):
     '''
@@ -63,16 +62,17 @@ def update_song(song_id, **kwargs):
     song_ref = db.collection('songs').document(song_id)
     if kwargs:
         song_ref.update(kwargs)
-        print('Song updated successfully!')
+        return {'message': 'Song updated successfully!'}
     else:
-        print('No updates provided.')
+        return {'message': 'No updates provided.'}
 
-
-add_user('1', 'Bryce', 'Woodland')
-add_song('1', 'Come Together', 'The Beatles', 'Abbey Road', 259)
-add_song('2', 'Here Comes the Sun', 'The Beatles', 'Abbey Road', 259)
-add_playlist('1', '1', 'Best of The Beatles', 'Songs that I like by The Beatles')
-add_song_to_playlist('1', '1')
-add_song_to_playlist('1', '2')
-
-update_song('2', duration=185)
+def update_user(user_id, **kwargs):
+    '''
+    Updates user information.
+    '''
+    user_ref = db.collection('users').document(user_id)
+    if kwargs:
+        user_ref.update(kwargs)
+        return {'message': 'User updated successfully.'}
+    else:
+        return {'message': 'No updates provided.'}
