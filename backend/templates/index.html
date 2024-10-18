@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Playlist Manager</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script defer src="/static/scripts.js"></script>
+</head>
+<body>
+    <h1>Music Playlist Manager</h1>
+    <div class="form-container">
+        <div class="form-group">
+            <h2>Add Song</h2>
+            <label for="song_id">Song ID</label>
+            <input type="text" id="song_id">
+            <label for="song_title">Song Title</label>
+            <input type="text" id="song_title">
+            <label for="artist">Artist</label>
+            <input type="text" id="artist">
+            <label for="album">Album</label>
+            <input type="text" id="album">
+            <label for="duration">Duration</label>
+            <input type="text" id="duration">
+            <button onclick="add_song()">Add Song</button>
+        </div>
+
+        <div class="form-group">
+            <h2>Update Song</h2>
+            <label for="update_song_id">Song ID</label>
+            <input type="text" id="update_song_id">
+            <label for="update_song_title">Song Title</label>
+            <input type="text" id="update_song_title">
+            <label for="update_artist">Artist</label>
+            <input type="text" id="update_artist">
+            <label for="update_album">Album</label>
+            <input type="text" id="update_album">
+            <label for="update_duration">Duration</label>
+            <input type="text" id="update_duration">
+            <button onclick="update_song()">Update Song</button>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <div class="form-group">
+            <h2>Add Playlist</h2>
+            <label for="playlist_id">Playlist ID</label>
+            <input type="text" id="playlist_id">
+            <label for="playlist_title">Playlist Title</label>
+            <input type="text" id="playlist_title">
+            <label for="description">Description</label>
+            <input type="text" id="description">
+            <button onclick="add_playlist()">Add Playlist</button>
+        </div>
+
+        <div class="form-group">
+            <h2>Update Playlist</h2>
+            <label for="update_playlist_id">Playlist ID</label>
+            <input type="text" id="update_playlist_id">
+            <label for="update_playlist_title">Playlist Title</label>
+            <input type="text" id="update_playlist_title">
+            <label for="update_description">Description</label>
+            <input type="text" id="update_description">
+            <button onclick="update_playlist()">Update Playlist</button>
+        </div>
+    </div>
+    
+    <div class="form-container">
+        <div class="form-group">
+            <h2>Get Playlist</h2>
+            <label for="playlist_id">Playlist ID</label>
+            <input type="text" id="playlist_id">
+            <button onclick="getPlaylist()">Get Playlist</button>
+        </div>
+    </div>
+
+    <div id="playlist-display" class="playlist-display">
+        <!-- Playlist data will be displayed here -->
+    </div>
+
+</body>
+</html>

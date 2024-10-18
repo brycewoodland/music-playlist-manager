@@ -47,3 +47,19 @@ body {
 .form-group button:hover {
     background-color: #0056b3;
 }
+
+.playlist-display {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.playlist-display h3 {
+    margin-top: 0;
+}
+
+.playlist-display p {
+    margin: 5px 0;
+}
