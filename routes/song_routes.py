@@ -17,8 +17,8 @@ song_bp = Blueprint('song_bp', __name__)
                 'type': 'object',
                 'properties': {
                     'song_id': {
-                        'type': 'string',
-                        'example': '1'
+                        'type': 'number',
+                        'example': 1
                     },
                     'song_title': {
                         'type': 'string',
@@ -33,8 +33,8 @@ song_bp = Blueprint('song_bp', __name__)
                         'example': 'The Beatles Again'
                     },
                     'duration': {
-                        'type': 'string',
-                        'example': '7:11'
+                        'type': 'number',
+                        'example': 430
                     }
                 }
             }
@@ -65,11 +65,19 @@ def add_song_route():
     result = add_song(song_id, song_title, artist, album, duration)
     return jsonify(result)
 
-@song_bp.route('/song', methods=['PUT'])
+@song_bp.route('/song/<int:song_id>', methods=['PUT'])
 @swag_from({
     'summary': 'Update an existing song',
     'description': 'Updates the details of an existing song.',
     'parameters': [
+        {
+            'name': 'song_id',
+            'in': 'path',
+            'type': 'integer',
+            'required': True,
+            'description': 'The ID of the song to update',
+            'example': 456
+        },
         {
             'name': 'body',
             'in': 'body',
@@ -77,25 +85,21 @@ def add_song_route():
             'schema': {
                 'type': 'object',
                 'properties': {
-                    'song_id': {
+                    'title': {
                         'type': 'string',
-                        'example': '1'
-                    },
-                    'song_title': {
-                        'type': 'string',
-                        'example': 'Hey Jude'
+                        'example': 'Updated Song Title'
                     },
                     'artist': {
                         'type': 'string',
-                        'example': 'The Beatles'
+                        'example': 'Updated Artist Name'
                     },
                     'album': {
                         'type': 'string',
-                        'example': 'The Beatles Again'
+                        'example': 'Updated Album Name'
                     },
                     'duration': {
-                        'type': 'string',
-                        'example': '7:11'
+                        'type': 'number',
+                        'example': 3.5
                     }
                 }
             }
@@ -113,12 +117,23 @@ def add_song_route():
                     }
                 }
             }
+        },
+        404: {
+            'description': 'Song not found',
+            'schema': {
+                'type': 'object',
+                'properties': {
+                    'message': {
+                        'type': 'string',
+                        'example': 'Song not found'
+                    }
+                }
+            }
         }
     }
 })
-def update_song_route():
+def update_song_route(song_id):
     data = request.json
-    song_id = data['song_id']
     updates = {key: value for key, value in data.items() if key != 'song_id'}
     result = update_song(song_id, **updates)
     return jsonify(result)
@@ -136,8 +151,8 @@ def update_song_route():
                     'type': 'object',
                     'properties': {
                         'song_id': {
-                            'type': 'string',
-                            'example': '1'
+                            'type': 'number',
+                            'example': 1
                         },
                         'song_title': {
                             'type': 'string',
@@ -152,8 +167,8 @@ def update_song_route():
                             'example': 'The Beatles Again'
                         },
                         'duration': {
-                            'type': 'string',
-                            'example': '7:11'
+                            'type': 'number',
+                            'example': 430
                         }
                     }
                 }
@@ -173,10 +188,10 @@ def get_all_songs_route():
         {
             'name': 'song_id',
             'in': 'path',
-            'type': 'string',
+            'type': 'number',
             'required': True,
             'description': 'The ID of the song to retrieve',
-            'example': '1'
+            'example': 1
         }
     ],
     'responses': {
@@ -186,8 +201,8 @@ def get_all_songs_route():
                 'type': 'object',
                 'properties': {
                     'song_id': {
-                        'type': 'string',
-                        'example': '1'
+                        'type': 'number',
+                        'example': 1
                     },
                     'song_title': {
                         'type': 'string',
@@ -202,8 +217,8 @@ def get_all_songs_route():
                         'example': 'The Beatles Again'
                     },
                     'duration': {
-                        'type': 'string',
-                        'example': '7:11'
+                        'type': 'number',
+                        'example': 430
                     }
                 }
             }
@@ -234,10 +249,10 @@ def get_song_route(song_id):
         {
             'name': 'song_id',
             'in': 'path',
-            'type': 'string',
+            'type': 'number',
             'required': True,
             'description': 'The ID of the song to delete',
-            'example': '1'
+            'example': 1
         }
     ],
     'responses': {
