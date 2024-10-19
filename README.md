@@ -65,5 +65,5 @@ I found these websites useful in developing this software:
 The following items I plan to fix, improve, and/or add to this project in the future:
 
 * [ ] Adding a user with authorization, this way when a user signs in they can access their playlists.
-* [ ] I also want to implement authorization so that user's can only add songs to playlists and can't create, update, or delete song info.
-* [ ] Implement a frontend
+* [ ] I also want to implement authorization so that users can only add songs to playlists and can't create, update, or delete song info.
+* [ ] Implement a frontend.
