@@ -35,17 +35,19 @@ Steps to build and/or run the software:
 
 Instructions for using the software:
 
-1. First step here
-2.
-3.
+1. **Clone the Repository**:
+   ```sh
+   git clone https://github.com/yourusername/music-playlist-manager.git
+   cd music-playlist-manager
+2.```python
+  python server.py
+  ```
 
 ## Development Environment 
 
 To recreate the development environment, you need the following software and/or libraries with the specified versions:
 
-* First thing here
-*
-*
+* 
 
 ## Useful Websites to Learn More
 
