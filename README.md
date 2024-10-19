@@ -24,9 +24,15 @@ Steps to build and/or run the software:
    - Make sure you have Python 3.8+ installed. You can download it from the [official Python website](https://www.python.org/downloads/).
 
 3. **Project Dependencies**:
-   - '''py pip install firebase-admin'''
-   - '''py pip install Flask'''
-   - '''py pip install flasgger'''  
+   '''python
+     pip install firebase-admin
+   '''
+   '''python
+   pip install Flask
+   '''
+   '''python
+    pip install flasgger
+   '''  
      
 
 Instructions for using the software:
