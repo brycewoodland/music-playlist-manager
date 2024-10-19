@@ -39,7 +39,8 @@ Instructions for using the software:
    ```sh
    git clone https://github.com/yourusername/music-playlist-manager.git
    cd music-playlist-manager
-2.```python
+2. **To Run**:
+```Python
   python server.py
   ```
 
