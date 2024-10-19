@@ -48,20 +48,22 @@ Instructions for using the software:
 
 To recreate the development environment, you need the following software and/or libraries with the specified versions:
 
-* 
+* Firestore
+* Python
+* Packages: firestore-admin, flask, & flasgger
 
 ## Useful Websites to Learn More
 
 I found these websites useful in developing this software:
 
-* [Website Title](Link)
-*
-*
+* [Firebase](https://firebase.google.com/docs/firestore)
+* [What are Cloud Databases?](https://www.youtube.com/watch?v=RUa0GTgYrXc)
+* [#3 @reach/router & Firestore — Let's build a Firebase & React app](https://www.youtube.com/watch?v=gWC8zjc8wPs)
 
 ## Future Work
 
 The following items I plan to fix, improve, and/or add to this project in the future:
 
-* [ ] First thing here
-* [ ]
-* [ ]
+* [ ] Adding a user with authorization, this way when a user signs in they can access their playlists.
+* [ ] I also want to implement authorization so that user's can only add songs to playlists and can't create, update, or delete song info.
+* [ ] Implement a frontend
